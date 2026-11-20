@@ -1,0 +1,6 @@
+{
+  "name": "Personal AI Portfolio Draft",
+  "description": "Minimal structural draft for a personal AI hobby-project portfolio with bilingual EN/DE toggle, 5-language intro card, and two-layer technical case studies.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
