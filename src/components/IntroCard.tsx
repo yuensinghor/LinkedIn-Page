@@ -18,7 +18,7 @@ export function IntroCard({ copy }: IntroCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-      className="mx-auto max-w-[1100px] px-4 pt-10 sm:px-6 sm:pt-12"
+      className="relative mx-auto max-w-[1100px] px-4 pt-10 sm:px-6 sm:pt-12"
     >
       <div className="rounded-xl border border-[#E4E4E7] bg-white p-5 transition-colors duration-200 hover:border-[#D4D4D8] sm:p-6">
         <div className="flex flex-col justify-between gap-4 border-b border-[#E4E4E7] pb-4 sm:flex-row sm:items-center">

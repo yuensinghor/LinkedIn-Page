@@ -2,7 +2,11 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowDown, Check, Mail } from 'lucide-react';
 import { SITE_CONFIG, SiteCopy } from '../data/portfolioContent';
+import { DotField } from './DotField';
 import { WireframeSlot } from './WireframeSlot';
+const DOT_SPILL = 256; // how far the dots reach into the next section (px)
+const DOT_FADE = 420; // length of the fade-out (px)
+const DOT_MASK = `linear-gradient(to bottom, #000 calc(100% - ${DOT_FADE}px), transparent 100%)`;
 
 interface HeroSectionProps {
   copy: SiteCopy['hero'];
@@ -113,7 +117,7 @@ export function HeroSection({ copy, onSeeBuilds }: HeroSectionProps) {
       ref={heroRef}
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
-      className="relative overflow-hidden border-b border-[#E4E4E7] bg-[#FAFAFA]"
+      className="relative bg-[#FAFAFA]"
     >
       {/* Subtle trusq.de-inspired hairline orbital arcs & faint corner dot grid */}
       <div
@@ -190,6 +194,16 @@ export function HeroSection({ copy, onSeeBuilds }: HeroSectionProps) {
           <circle cx="842" cy="338" r="2.2" fill="#A1A1AA" fillOpacity="0.4" />
         </svg>
       </div>
+
+      {/* Cursor-attract dot field: a canvas that fills the hero and never blocks clicks.
+          Colours are RGB triplets (blue matches the #2563EB accent). */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0"
+          style={{ bottom: -DOT_SPILL, maskImage: DOT_MASK, WebkitMaskImage: DOT_MASK }}
+        >
+          <DotField color="37, 99, 235" color2="14, 143, 158" />
+        </div>
 
       {/* Cursor-following 11px accent dot (fades on scroll, disabled on touch/reduced motion) */}
       {motionEnabled ? (
